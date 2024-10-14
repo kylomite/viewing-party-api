@@ -1,8 +1,6 @@
 class Api::V1::MoviesController < ApplicationController
     def index
-        conn = Faraday.new(url: "https://api.themoviedb.org") do |faraday|
-            # faraday.headers["Authorization"] = "Bearer #{Rails.application.credentials.TMDB[:key]}"
-        end
+        conn = Faraday.new(url: "https://api.themoviedb.org") 
 
         response = conn.get("/3/movie/top_rated", { api_key: Rails.application.credentials.TMDB[:key]})
 
